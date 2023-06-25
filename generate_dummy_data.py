@@ -29,26 +29,28 @@ now = datetime.now()
 
 faker = Faker()
 
-# create dummy users
-for i in range(200):
-    name = faker.name()
-    address = faker.address()
-    phone = faker.msisdn()
-    email = f'{name.replace(" ", "_")}@email.com'
-    new_user = server.User(name=name, address=address, phone=phone, email=email)
-    db.session.add(new_user)
-    db.session.commit()
+with app.app_context():
+    
+    # create dummy users
+    for i in range(200):
+        name = faker.name()
+        address = faker.address()
+        phone = faker.msisdn()
+        email = f'{name.replace(" ", "_")}@email.com'
+        new_user = server.User(name=name, address=address, phone=phone, email=email)
+        db.session.add(new_user)
+        db.session.commit()
 
-# create dummy blog posts
-for i in range(200):
-    title = faker.sentence(5)
-    body = faker.paragraph(190)
-    date = faker.date_time()
-    user_id = randrange(1, 200)
+    # create dummy blog posts
+    for i in range(200):
+        title = faker.sentence(5)
+        body = faker.paragraph(190)
+        date = faker.date_time()
+        user_id = randrange(1, 200)
 
-    new_blog_post = server.BlogPost(
-        title=title, body=body, date=date, user_id=user_id
-    )
-    db.session.add(new_blog_post)
-    db.session.commit()
+        new_blog_post = server.BlogPost(
+            title=title, body=body, date=date, user_id=user_id
+        )
+        db.session.add(new_blog_post)
+        db.session.commit()
 

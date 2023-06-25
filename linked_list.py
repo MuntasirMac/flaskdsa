@@ -41,7 +41,7 @@ class LinkedList:
     
     def insert_at_end(self, data):
         if self.head == None:
-            self.insert_at_beginning(data)
+            self.insert_beginning(data)
 
         # if self.last_node is None:
         #     print("last node is None")
@@ -57,22 +57,30 @@ class LinkedList:
         self.last_node.next_node = Node(data, None)
         self.last_node = self.last_node.next_node
 
-ll = LinkedList()
-ll.insert_beginning("data")
-ll.insert_beginning("data")
-ll.insert_beginning("data")
-ll.insert_beginning("data")
-ll.insert_beginning("data")
-ll.insert_beginning("data")
-ll.insert_beginning("data")
-ll.insert_beginning("data")
-ll.insert_beginning("data")
-ll.insert_beginning("data")
-ll.insert_beginning("data")
-ll.insert_beginning("data")
+    def get_user_by_id(self, user_id):
+        node = self.head
+        while node:
+            if node.data["id"] is int(user_id):
+                return node.data
+            node = node.next_node
+        return None
 
-ll.insert_at_end("end")
-ll.insert_at_end("end2")
-ll.insert_at_end("end3")
+# ll = LinkedList()
+# ll.insert_beginning("data")
+# ll.insert_beginning("data")
+# ll.insert_beginning("data")
+# ll.insert_beginning("data")
+# ll.insert_beginning("data")
+# ll.insert_beginning("data")
+# ll.insert_beginning("data")
+# ll.insert_beginning("data")
+# ll.insert_beginning("data")
+# ll.insert_beginning("data")
+# ll.insert_beginning("data")
+# ll.insert_beginning("data")
 
-ll.print_ll()
+# ll.insert_at_end("end")
+# ll.insert_at_end("end2")
+# ll.insert_at_end("end3")
+
+# ll.print_ll()
